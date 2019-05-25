@@ -203,7 +203,7 @@ namespace te_hashed
         using HashedContainer::HashedContainer;
         te_hashmap() {}
 
-        std::pair<typename HashedContainer::iterator, bool> emplace(K&& key, V&& value){
+        std::pair<typename HashedContainer::iterator, bool> insert(K&& key, V&& value){
             return HashedContainer::emplace(std::forward<K>(key), std::forward<V>(value));
         }
 
