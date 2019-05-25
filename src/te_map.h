@@ -201,9 +201,14 @@ namespace te_hashed
     public:
 
         using HashedContainer::HashedContainer;
-        te_hashmap(){
-            HashedContainer::emplace(2,3);
-            auto r = HashedContainer::find(2);
+        te_hashmap() {}
+
+        std::pair<typename HashedContainer::iterator, bool> emplace(K&& key, V&& value){
+            return HashedContainer::emplace(std::forward<K>(key), std::forward<V>(value));
+        }
+
+        typename HashedContainer::iterator find(const K& key){
+            return HashedContainer::find(key);
         }
     };
 }
